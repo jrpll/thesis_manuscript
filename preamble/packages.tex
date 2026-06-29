@@ -1,0 +1,49 @@
+%==============================================================================
+%  Packages
+%==============================================================================
+
+% --- Language -----------------------------------------------------------------
+% The LAST language listed is the document's MAIN language.
+% Thesis currently set to English-main with French available (\selectlanguage{french}
+% or \begin{otherlanguage}{french}...). To write mainly in French, swap the order.
+\usepackage[french,english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% --- Math (load BEFORE newtxmath: avoids \Bbbk clash & enables theorem styles) -
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}      % \coloneqq, \DeclarePairedDelimiter, etc.
+
+% --- Times-style fonts (text + matching math), the academic standard ----------
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage{bm}             % bold math symbols: \bm{x} (load after newtxmath)
+
+% --- Graphics & figures -------------------------------------------------------
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{subcaption}     % subfigures
+\usepackage{float}
+
+% --- Tables -------------------------------------------------------------------
+\usepackage{booktabs}       % \toprule \midrule \bottomrule
+\usepackage{array}
+
+% --- Color & misc -------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{microtype}      % subtle spacing/kerning improvements
+\usepackage{enumitem}
+\usepackage{csquotes}       % required by babel + biblatex for quotes
+
+% --- Algorithms (handy for ML pseudocode) -------------------------------------
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% --- Bibliography -------------------------------------------------------------
+\usepackage[backend=biber,style=numeric-comp,sorting=nyt,natbib=true]{biblatex}
+
+% --- Hyperlinks (load late) ---------------------------------------------------
+\usepackage[hidelinks,breaklinks=true]{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}  % smart \cref references (load AFTER hyperref)

@@ -1,0 +1,39 @@
+{
+  // --- Build: drive everything through latexmk (reads .latexmkrc) -----------
+  "latex-workshop.latex.recipes": [
+    { "name": "latexmk", "tools": ["latexmk"] }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "env": {}
+    }
+  ],
+
+  // Aux/PDF files live in build/ (matches .latexmkrc $out_dir).
+  "latex-workshop.latex.outDir": "build",
+
+  // Build on save; you'll see the PDF update in the tab preview.
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // Don't litter the source tree; clean intermediate files into build/.
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+
+  // Format .tex with latexindent on save (already installed).
+  "[latex]": {
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [100]
+  },
+
+  // SyncTeX: ctrl/cmd+click jumps between source and PDF.
+  "latex-workshop.view.pdf.viewer": "tab"
+}

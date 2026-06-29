@@ -1,0 +1,29 @@
+# --- LaTeX build artifacts ----------------------------------------------------
+# Everything compiled goes to build/ (see .latexmkrc), so ignore the whole dir.
+build/
+
+# Belt-and-suspenders: ignore stray aux files if ever built outside build/.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.idx
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# --- Editor / OS --------------------------------------------------------------
+.DS_Store
+*.swp
+
+# Keep .vscode/settings.json tracked (shared build config) — do NOT ignore it.

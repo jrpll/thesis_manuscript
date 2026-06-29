@@ -1,0 +1,38 @@
+%==============================================================================
+%  PhD Thesis — main file
+%  Compile with:  latexmk  (config in .latexmkrc, output goes to build/)
+%  Engine: pdflatex  |  Bib: biblatex + biber
+%==============================================================================
+\documentclass[11pt,a4paper,twoside,openright]{report}
+
+% --- Preamble (packages, fonts/style, custom macros) --------------------------
+\input{preamble/packages}
+\input{preamble/style}
+\input{preamble/commands}
+
+% --- Bibliography database ----------------------------------------------------
+\addbibresource{bib/references.bib}
+
+%==============================================================================
+\begin{document}
+
+% --- Front matter -------------------------------------------------------------
+\frontmatter%  (defined in style.tex for the report class)
+\input{frontmatter/titlepage}
+\input{frontmatter/abstract}
+\tableofcontents
+
+% --- Main matter --------------------------------------------------------------
+\mainmatter
+\input{chapters/00-introduction}
+\input{chapters/01-stochastic-interpolants}
+\input{chapters/02-dit}
+\input{chapters/03-image-space-scaling}
+\input{chapters/04-image-editing}
+\input{chapters/99-notes}
+
+% --- Back matter --------------------------------------------------------------
+\backmatter
+\printbibliography[heading=bibintoc]
+
+\end{document}

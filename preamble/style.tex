@@ -1,0 +1,43 @@
+%==============================================================================
+%  Document style: geometry, spacing, headers, theorems
+%==============================================================================
+
+% --- Page geometry ------------------------------------------------------------
+\usepackage[a4paper,inner=3.5cm,outer=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% --- Line spacing -------------------------------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+
+% --- Running headers ----------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\nouppercase{\leftmark}}   % chapter on even pages
+\fancyhead[RO]{\nouppercase{\rightmark}}  % section on odd pages
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% --- The 'report' class has no \frontmatter/\mainmatter/\backmatter -----------
+%     (those belong to 'book'). Define lightweight equivalents here so main.tex
+%     reads cleanly and page numbering follows thesis convention.
+\makeatletter
+\newcommand{\frontmatter}{%
+  \cleardoublepage \pagenumbering{roman} \setcounter{page}{1}}
+\newcommand{\mainmatter}{%
+  \cleardoublepage \pagenumbering{arabic} \setcounter{page}{1}}
+\newcommand{\backmatter}{%
+  \cleardoublepage}
+\makeatother
+
+% --- Theorem environments -----------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
