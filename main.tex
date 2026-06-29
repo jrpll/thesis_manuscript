@@ -1,5 +1,8 @@
 \documentclass[12pt,a4paper,oneside]{book} % oneside: clean PDF (no blank pages). Switch to twoside for print.
 \usepackage{graphicx} % Required for inserting images
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{references.bib}
 
 \title{Manuscrit}
 \author{jules.ripoll}
@@ -17,7 +20,19 @@
 
 Petite intro diffusion, puis flow matching, et montrer que c'est unifié par les interpolants stochastiques.
 
-Tout ça c'est la même chose. Montrer qu'en partant du formalisme général des interpolants stochastiques on retombe à la fois sur les algos discrets de flow matching et ddpm etc...
+Tout ça c'est la même chose. Montrer qu'en partant du formalisme général des interpolants stochastiques~\cite{ma2024sitexploringflowdiffusionbased} on retombe à la fois sur les algos discrets de flow matching et ddpm etc...
+
+Les modèles des diffusion et de Flow matching transforment du bruit en donnée par un processus qu'on peut résumer ainsi :
+\begin{equation}
+    x_t=\alpha_t x_0 + \sigma_t \epsilon
+\end{equation}
+
+On génère ensuite des images avec la reverse time SDE ici :
+\begin{equation}
+    dX_t=v(X_t,t)dt-\frac{1}{2}w_t s(X_t,t)dt+\sqrt{w_t}dW_t
+\end{equation}
+
+Où la vélocité et donc le score s'expriment en fonction de $\alpha_t$ et $\sigma_t$
 
 \chapter{Le DiT en détails}
 
@@ -29,6 +44,9 @@ Le DiT moderne. À updater car il y a souvent des tweaks.
 
 \chapter{notes random}
 
-Parler qlq part des méthodes de gatys et de spliceViT ? Ces papiers sont très cool
+Parler qlq part des méthodes de gatys~\cite{gatys2016} et de spliceViT ? Ces papiers sont très cool
+
+\backmatter
+\printbibliography
 
 \end{document}
