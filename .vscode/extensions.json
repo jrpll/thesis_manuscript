@@ -1,0 +1,4 @@
+{
+  // The only extension you need for LaTeX in VSCode.
+  "recommendations": ["james-yu.latex-workshop"]
+}

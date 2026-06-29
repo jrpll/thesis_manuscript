@@ -1,16 +1,2 @@
-# LaTeX build output
-main.pdf
-*.aux
-*.bbl
-*.bcf
-*.blg
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.run.xml
-*.synctex.gz
-*.toc
 build/
-
 .DS_Store

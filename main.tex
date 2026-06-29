@@ -1,43 +1,30 @@
-\documentclass[twoside,11pt]{article}
-
-% JMLR style — exact file from the "Stochastic Interpolants" paper (arXiv:2303.08797).
-% jmlr2e already loads amssymb, graphicx, natbib, hyperref — don't reload those.
-\usepackage{jmlr2e}
-
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[french,english]{babel}
-\usepackage{amsmath}
-
-% JMLR running headers
-\ShortHeadings{Manuscrit}{Ripoll}
-\firstpageno{1}
+\documentclass[12pt,a4paper,oneside]{book} % oneside: clean PDF (no blank pages). Switch to twoside for print.
+\usepackage{graphicx} % Required for inserting images
 
 \title{Manuscrit}
-
-\author{\name jules.ripoll \email jules.ripoll@insa-toulouse.fr \\
-	\addr INSA Toulouse}
-\editor{}
+\author{jules.ripoll}
+\date{June 2026}
 
 \begin{document}
 
+\frontmatter % roman page numbers (i, ii, iii ...)
 \maketitle
+\tableofcontents
 
-\section{Flow-matching and Diffusion under the lense of Stochastic interpolants}
+\mainmatter % arabic page numbers (1, 2, 3 ...) — chapters start here
+
+\chapter{Flow-matching and Diffusion under the lens of Stochastic interpolants}
 
 Tout ça c'est la même chose. Montrer qu'en partant du formalisme général des interpolants stochastiques on retombe à la fois sur les algos discrets de flow matching et ddpm etc...
 
-\section{Le DiT en détails}
+\chapter{Le DiT en détails}
 
-\section{Pourquoi est-ce que d'un coup c'est devenu ok de faire du image-space à l'échelle on a plus besoin de compression ?}
+\chapter{Pourquoi est-ce que d'un coup c'est devenu ok de faire du image-space à l'échelle on a plus besoin de compression ?}
 
-\section{Les tâches d'édition d'image sont mal définies}
+\chapter{Les tâches d'édition d'image sont mal définies}
 
-\section{notes random}
+\chapter{notes random}
 
 Parler qlq part des méthodes de gatys et de spliceViT ? Ces papiers sont très cool
-
-\bibliographystyle{plainnat}
-\bibliography{references}
 
 \end{document}

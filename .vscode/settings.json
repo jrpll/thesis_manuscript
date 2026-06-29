@@ -1,0 +1,32 @@
+{
+  // Keep build artifacts out of the project root.
+  "latex-workshop.latex.outDir": "%DIR%/build",
+
+  // Build with latexmk (handles reruns + bibliography automatically) on every save.
+  "latex-workshop.latex.recipes": [
+    { "name": "latexmk", "tools": ["latexmk"] }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.autoBuild.run": "onSave",
+
+  // Open the PDF in a VSCode tab next to the source.
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // Show one page at a time (no two-up spread).
+  "latex-workshop.view.pdf.spreadMode": "none",
+
+  // Delete .aux/.log/etc. after a build, but never the .pdf.
+  "latex-workshop.latex.autoClean.run": "onBuilt"
+}
