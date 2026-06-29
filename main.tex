@@ -1,23 +1,23 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[twoside,11pt]{article}
 
-% --- niceties ---
+% JMLR style — exact file from the "Stochastic Interpolants" paper (arXiv:2303.08797).
+% jmlr2e already loads amssymb, graphicx, natbib, hyperref — don't reload those.
+\usepackage{jmlr2e}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[french,english]{babel}
 \usepackage{amsmath}
-\usepackage{amssymb}          % before newtxmath (avoids \Bbbk clash)
-\usepackage{mathtools}
-\usepackage{newtxtext}        % Times-style text
-\usepackage{newtxmath}        % matching Times-style math
-\usepackage{bm}
-\usepackage[backend=biber,style=numeric-comp]{biblatex}
-\usepackage[hidelinks]{hyperref}
-\addbibresource{references.bib}
+
+% JMLR running headers
+\ShortHeadings{Manuscrit}{Ripoll}
+\firstpageno{1}
 
 \title{Manuscrit}
-\author{jules.ripoll }
-\date{June 2026}
+
+\author{\name jules.ripoll \email jules.ripoll@insa-toulouse.fr \\
+	\addr INSA Toulouse}
+\editor{}
 
 \begin{document}
 
@@ -37,6 +37,7 @@ Tout ça c'est la même chose. Montrer qu'en partant du formalisme général des
 
 Parler qlq part des méthodes de gatys et de spliceViT ? Ces papiers sont très cool
 
-\printbibliography
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
