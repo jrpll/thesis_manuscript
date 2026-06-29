@@ -16,6 +16,8 @@
 
 \mainmatter % arabic page numbers (1, 2, 3 ...) — chapters start here
 
+\chapter{Intro / Contexte de l'identification forensique}
+
 \chapter{Flow-matching and Diffusion under the lens of Stochastic interpolants}
 
 Petite intro diffusion, puis flow matching, et montrer que c'est unifié par les interpolants stochastiques.
@@ -32,13 +34,21 @@ On génère ensuite des images avec la reverse time SDE ici :
     dX_t=v(X_t,t)dt-\frac{1}{2}w_t s(X_t,t)dt+\sqrt{w_t}dW_t
 \end{equation}
 
-Où la vélocité et donc le score s'expriment en fonction de $\alpha_t$ et $\sigma_t$
+Où la vélocité et donc le score s'expriment en fonction de $\alpha_t$ et $\sigma_t$:
+
+\begin{equation}
+    s(x,t)=\sigma_t^{-1}\frac{\alpha_t v(x,t)-\dot{\alpha_t}x}{\dot{\alpha_t}\sigma_t-\alpha_t \dot{\sigma_t}}
+\end{equation}
+
+Prenons l'interpolant lié à la SDE variance preserving~\cite{song2021scorebasedgenerativemodelingstochastic}.
 
 \chapter{Le DiT en détails}
 
 Le DiT moderne. À updater car il y a souvent des tweaks.
 
 \chapter{Pourquoi est-ce que d'un coup c'est devenu ok de faire du image-space à l'échelle on a plus besoin de compression ?}
+
+\chapter{Reconnaissance faciale}
 
 \chapter{Les tâches d'édition d'image sont mal définies}
 
