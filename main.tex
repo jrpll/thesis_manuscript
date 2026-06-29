@@ -1,38 +1,42 @@
-%==============================================================================
-%  PhD Thesis — main file
-%  Compile with:  latexmk  (config in .latexmkrc, output goes to build/)
-%  Engine: pdflatex  |  Bib: biblatex + biber
-%==============================================================================
-\documentclass[11pt,a4paper,twoside,openright]{report}
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
 
-% --- Preamble (packages, fonts/style, custom macros) --------------------------
-\input{preamble/packages}
-\input{preamble/style}
-\input{preamble/commands}
+% --- niceties ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french,english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}          % before newtxmath (avoids \Bbbk clash)
+\usepackage{mathtools}
+\usepackage{newtxtext}        % Times-style text
+\usepackage{newtxmath}        % matching Times-style math
+\usepackage{bm}
+\usepackage[backend=biber,style=numeric-comp]{biblatex}
+\usepackage[hidelinks]{hyperref}
+\addbibresource{references.bib}
 
-% --- Bibliography database ----------------------------------------------------
-\addbibresource{bib/references.bib}
+\title{Manuscrit}
+\author{jules.ripoll }
+\date{June 2026}
 
-%==============================================================================
 \begin{document}
 
-% --- Front matter -------------------------------------------------------------
-\frontmatter%  (defined in style.tex for the report class)
-\input{frontmatter/titlepage}
-\input{frontmatter/abstract}
-\tableofcontents
+\maketitle
 
-% --- Main matter --------------------------------------------------------------
-\mainmatter
-\input{chapters/00-introduction}
-\input{chapters/01-stochastic-interpolants}
-\input{chapters/02-dit}
-\input{chapters/03-image-space-scaling}
-\input{chapters/04-image-editing}
-\input{chapters/99-notes}
+\section{Flow-matching and Diffusion under the lense of Stochastic interpolants}
 
-% --- Back matter --------------------------------------------------------------
-\backmatter
-\printbibliography[heading=bibintoc]
+Tout ça c'est la même chose. Montrer qu'en partant du formalisme général des interpolants stochastiques on retombe à la fois sur les algos discrets de flow matching et ddpm etc...
+
+\section{Le DiT en détails}
+
+\section{Pourquoi est-ce que d'un coup c'est devenu ok de faire du image-space à l'échelle on a plus besoin de compression ?}
+
+\section{Les tâches d'édition d'image sont mal définies}
+
+\section{notes random}
+
+Parler qlq part des méthodes de gatys et de spliceViT ? Ces papiers sont très cool
+
+\printbibliography
 
 \end{document}
