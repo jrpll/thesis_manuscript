@@ -1,5 +1,6 @@
 \documentclass[12pt,a4paper,oneside]{book} % oneside: clean PDF (no blank pages). Switch to twoside for print.
 \usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb}
 \usepackage[hidelinks]{hyperref}
 \usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
 \addbibresource{references.bib}
@@ -25,33 +26,73 @@
 \paragraph{Introduction.} 
 Les modèles génératifs sont une classe de modèles génératifs modélisant une distribution de données. 
 Via différents algorithmes d'apprentissage, ces modèles peuvent approcher des lois de probabilités complexes et hautement structurées. 
-Un point commun qu'on ces méthodes est qu'elles partent toutes d'une distribution de bruit, typiquement Gaussien, qu'on sait donc aisément échantillonner. 
-En partant d'échantillons Gaussien, tout l'enjeu devient de les transformer pour en donner des échantillons vraisemblables de notre distribution de données.
 
 \paragraph{GANs.} Ce modèle est sans doutes un des premiers à avoir montré des résultats probants pour la synthèse de données à la structure complexe comme des images réelles. Un GAN, pour réseaux adversariels génératifs, est entrainé en optimisant simultanément deux réseaux. Le premier, générateur, prend des vecteurs Gaussiens et sort des images. Le second, appelé discriminateur, a pour rôle de distinguer les images réelles, provenant d'un jeu d'entrainement, de celles produites par le générateur. Ces deux réseaux sont entrainés sur le même résultat de classification du discriminateur. Si le discriminateur classe une image générée comme réelle, ce signal va être interprété positivement par le générateurn et négativement par le discriminateur, mais tous deux vont s'améliorer. C'est cette optimisation conjointe qui pousse le générateur proche de la distribution du jeu d'entrainement, car ça lui permet d'arnaquer le discriminateur.
 
 \paragraph{Modèles auto-régressifs.}
 
-\paragraph{Neural ODEs.}
+\paragraph{VAEs.}
+
+\paragraph{Continuous normalizing flows.}
 
 \paragraph{Modèles de diffusion, score-matching, flow-matching.} Enfin, un dernier paradigme a émergé dans les dernières années pour les modèles génératifs, à savoir les modèles dits de diffusion. On emploie le terme de modèles de diffusion pour englober score-matching et flow-matching, qui présentent quelques nuances dans le formalisme mathématiques mais produisent des algorithmes très similaires. Réputés pour leur simplicité à entrainer et leur capacité à devenir très rapides, ils sont devenus incontournables pour modéliser des lois de probabilités complexes. Cette classe de modèles, que certains appellent \textit{débruiteurs itératifs}
 
-\section{Les modèles de diffusion en détails.}
+\section{Les mathématiques des débruiteurs itératifs.}
 
-\chapter{Le DiT en détails}
+Pour illustrer la ressemblance entre diffusion, score-matching et flow-matching, on se propose ici de partir de la définition générale d'un interpolant stochastique, pour ensuite montrer qu'avec différentes instanciations on aboutit aux différents paradigmes sus-nommés.
+
+\paragraph{L'interpolant.} L'interpolation $x_t$ entre un échantillon $x_0$ d'une distribution $p_0$ et un échantillon $x_1$ d'une distribution $p_1$ s'écrit ainsi:
+\begin{equation}
+    x_t = \alpha_t x_0 + \sigma_t x_1
+\end{equation}
+Avec $x_1$ Gaussien.
+On note le score comme le gradient de la densité de probabilité $\nabla \log p_t(x_t)$.
+La vitesse, ainsi que le bruit Gaussien, peuvent tous deux être déduits de ce score:
+\begin{gather}
+    \hat{x}_1(x_t) = \mathbb{E}\left[x_1 \mid x_t\right] = -\sigma_t \nabla \log p_t(x_t), \\
+    v(x_t) = \frac{\dot{\alpha}_t}{\alpha_t} x_t
+      - \sigma_t \Big(\dot{\sigma}_t - \frac{\dot{\alpha}_t}{\alpha_t}\sigma_t\Big) \nabla \log p_t(x_t),
+\end{gather}
+
+On obtient l'estimation $\hat{x_0}$ au point $x_t$ en employant la formule de Tweedie:
+\begin{equation}
+    \hat{x}_0(x_t) = \mathbb{E}\left[x_0 \mid x_t\right]
+    = \frac{x_t + \sigma_t^2 \nabla \log p_t(x_t)}{\alpha_t}
+\end{equation}
+
+[parler CPS, de la conversion en sde, des algos type flow grpo]
+
+\chapter{La recette actuelle pour les générateurs d'images}
 
 Le DiT moderne. À updater car il y a souvent des tweaks.
+Parler de distillation, d'alignment. Image references. Lire le report de Krea, qwen image, seed.
 
-\chapter{Pourquoi est-ce que d'un coup c'est devenu ok de faire du image-space à l'échelle on a plus besoin de compression ?}
+\chapter{La reconnaissance faciale}
 
-\chapter{Reconnaissance faciale}
+\chapter{Edition d'image avec les modèles de diffusion}
 
-\chapter{Les tâches d'édition d'image sont mal définies}
+\chapter{Première contribution: FlowID, plus adapté pour la reconstruction faciale}
 
-\chapter{notes random}
+\chapter{Deuxième contrib si dieu veut}
 
-Parler qlq part des méthodes de gatys~\cite{gatys2016} et de spliceViT ? Ces papiers sont très cool
+\chapter{Expérience de reconnaissance humaine}
 
+\chapter{Production d'une application open-source pour l'édition d'images}
+
+\chapter{Conclusion}
+
+
+%\chapter{Pourquoi est-ce que d'un coup c'est devenu ok de faire du image-space à l'échelle on a plus besoin de compression ?}
+
+%\chapter{Reconnaissance faciale}
+
+%\chapter{Les tâches d'édition d'image sont mal définies}
+
+%\chapter{notes random}
+
+%Parler qlq part des méthodes de gatys~\cite{gatys2016} et de spliceViT ? Ces papiers sont très cool
+
+\appendix
 \chapter{Diffusion bloopers}
 
 \backmatter
