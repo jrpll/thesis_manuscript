@@ -18,9 +18,25 @@
 
 \chapter{Intro / Contexte de l'identification forensique}
 
-\chapter{Flow-matching and Diffusion under the lens of Stochastic interpolants}
+\chapter{Modèles de Diffusion, de Flow, et interpolants stochastiques.}
 
+\section{Modèles génératifs}
 
+\paragraph{Introduction.} 
+Les modèles génératifs sont une classe de modèles génératifs modélisant une distribution de données. 
+Via différents algorithmes d'apprentissage, ces modèles peuvent approcher des lois de probabilités complexes et hautement structurées. 
+Un point commun qu'on ces méthodes est qu'elles partent toutes d'une distribution de bruit, typiquement Gaussien, qu'on sait donc aisément échantillonner. 
+En partant d'échantillons Gaussien, tout l'enjeu devient de les transformer pour en donner des échantillons vraisemblables de notre distribution de données.
+
+\paragraph{GANs.} Ce modèle est sans doutes un des premiers à avoir montré des résultats probants pour la synthèse de données à la structure complexe comme des images réelles. Un GAN, pour réseaux adversariels génératifs, est entrainé en optimisant simultanément deux réseaux. Le premier, générateur, prend des vecteurs Gaussiens et sort des images. Le second, appelé discriminateur, a pour rôle de distinguer les images réelles, provenant d'un jeu d'entrainement, de celles produites par le générateur. Ces deux réseaux sont entrainés sur le même résultat de classification du discriminateur. Si le discriminateur classe une image générée comme réelle, ce signal va être interprété positivement par le générateurn et négativement par le discriminateur, mais tous deux vont s'améliorer. C'est cette optimisation conjointe qui pousse le générateur proche de la distribution du jeu d'entrainement, car ça lui permet d'arnaquer le discriminateur.
+
+\paragraph{Modèles auto-régressifs.}
+
+\paragraph{Neural ODEs.}
+
+\paragraph{Modèles de diffusion, score-matching, flow-matching.} Enfin, un dernier paradigme a émergé dans les dernières années pour les modèles génératifs, à savoir les modèles dits de diffusion. On emploie le terme de modèles de diffusion pour englober score-matching et flow-matching, qui présentent quelques nuances dans le formalisme mathématiques mais produisent des algorithmes très similaires. Réputés pour leur simplicité à entrainer et leur capacité à devenir très rapides, ils sont devenus incontournables pour modéliser des lois de probabilités complexes. Cette classe de modèles, que certains appellent \textit{débruiteurs itératifs}
+
+\section{Les modèles de diffusion en détails.}
 
 \chapter{Le DiT en détails}
 
@@ -35,6 +51,8 @@ Le DiT moderne. À updater car il y a souvent des tweaks.
 \chapter{notes random}
 
 Parler qlq part des méthodes de gatys~\cite{gatys2016} et de spliceViT ? Ces papiers sont très cool
+
+\chapter{Diffusion bloopers}
 
 \backmatter
 \printbibliography
